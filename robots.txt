@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /film.html
 Disallow: /404.html
-Disallow: /_archive/
+Disallow: /charte.html
 
-Sitemap: https://kelik.fr/sitemap.xml
+Sitemap: https://lamascotte27.github.io/kelik-site/sitemap.xml

@@ -3,21 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kelik — On filme vos événements · Paris, Lille, Arras</title>
-  <meta name="description" content="Kelik filme vos événements à deux caméras : teasers, aftermovies, films qui en gardent tout le mood. Soirées, festivals, entreprises, sport. Paris, Lille, Arras. Devis gratuit sous 24 h.">
+  <title>Vidéaste événementiel à Paris, Lille et Arras | Kelik</title>
+  <meta name="description" content="Kelik, duo de vidéastes à Paris, Lille et Arras : aftermovies, teasers et films de vos soirées, festivals, séminaires et matchs. Devis gratuit sous 24 h.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-video-preview:-1">
+  <!-- Adresse officielle du site. À remplacer par https://kelik.fr/ partout (ici, sitemap.xml, robots.txt) le jour où le domaine pointe vers le site. -->
+  <link rel="canonical" href="https://lamascotte27.github.io/kelik-site/">
   <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="Kelik — On filme vos événements">
-  <meta property="og:description" content="Teasers, aftermovies, films : Arthur &amp; Adrien filment votre événement à deux caméras. Paris, Lille, Arras. Devis gratuit sous 24 h.">
+  <meta name="author" content="Kelik">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:url" content="https://kelik.fr/">
-  <meta property="og:image" content="https://kelik.fr/assets/og.jpg">
+  <meta property="og:site_name" content="Kelik">
+  <meta property="og:url" content="https://lamascotte27.github.io/kelik-site/">
+  <meta property="og:title" content="Kelik · On filme vos événements">
+  <meta property="og:description" content="Teasers, aftermovies, films : Arthur &amp; Adrien filment votre événement à deux caméras. Paris, Lille, Arras. Devis gratuit sous 24 h.">
+  <meta property="og:image" content="https://lamascotte27.github.io/kelik-site/assets/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kelik, on filme vos événements">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://kelik.fr/">
+  <meta name="twitter:title" content="Kelik · On filme vos événements">
+  <meta name="twitter:description" content="Teasers, aftermovies, films : Arthur &amp; Adrien filment votre événement à deux caméras. Paris, Lille, Arras.">
+  <meta name="twitter:image" content="https://lamascotte27.github.io/kelik-site/assets/og.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0910'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23D4FFD8' stroke-width='3'/%3E%3Cpath fill='%23fff' d='M17 16h9v11l10-11h12L37 27l12 21H38l-6-12-6 5v7h-9z'/%3E%3C/svg%3E">
+  <link rel="preload" as="image" href="assets/video/kelik-loop-poster.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:ital,wght@0,500;0,600;0,700;0,800;1,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,7 +36,137 @@
   <!-- Thème : fond blanc par défaut. ?theme=nuit affiche l'ancienne version sombre, ?theme=blanc y revient. -->
   <script>try{var t=new URLSearchParams(location.search).get('theme');if(t)sessionStorage.setItem('kelik-theme',t);if((t||sessionStorage.getItem('kelik-theme'))==='nuit')document.documentElement.removeAttribute('data-theme')}catch(e){}</script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Kelik","description":"Studio vidéo événementiel : soirées, festivals, entreprises, sport. Paris, Lille, Arras.","foundingDate":"2020","areaServed":["Paris","Lille","Arras"],"email":"arthur@kelik.fr","founder":[{"@type":"Person","name":"Arthur"},{"@type":"Person","name":"Adrien"}],"sameAs":["https://www.instagram.com/kelik_off/"]}
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "ProfessionalService",
+   "@id": "https://lamascotte27.github.io/kelik-site/#kelik",
+   "name": "Kelik",
+   "url": "https://lamascotte27.github.io/kelik-site/",
+   "description": "Studio vidéo événementiel : aftermovies, teasers et films de soirées, festivals, séminaires, lancements et événements sportifs. Deux vidéastes, Arthur et Adrien, sur chaque tournage.",
+   "logo": "https://lamascotte27.github.io/kelik-site/assets/icone-512.png",
+   "image": "https://lamascotte27.github.io/kelik-site/assets/og.jpg",
+   "email": "arthur@kelik.fr",
+   "foundingDate": "2020",
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Paris"
+    },
+    {
+     "@type": "City",
+     "name": "Lille"
+    },
+    {
+     "@type": "City",
+     "name": "Arras"
+    }
+   ],
+   "founder": [
+    {
+     "@type": "Person",
+     "name": "Arthur"
+    },
+    {
+     "@type": "Person",
+     "name": "Adrien"
+    }
+   ],
+   "knowsAbout": [
+    "vidéo événementielle",
+    "aftermovie",
+    "teaser",
+    "captation vidéo",
+    "film d’entreprise",
+    "vidéo sportive"
+   ],
+   "sameAs": [
+    "https://www.instagram.com/kelik_off/"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://lamascotte27.github.io/kelik-site/#site",
+   "url": "https://lamascotte27.github.io/kelik-site/",
+   "name": "Kelik",
+   "inLanguage": "fr-FR",
+   "publisher": {
+    "@id": "https://lamascotte27.github.io/kelik-site/#kelik"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://lamascotte27.github.io/kelik-site/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Vous venez à deux sur chaque tournage ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui, toujours. Arthur et Adrien filment ensemble : l’un au cœur de l’action, l’autre sur des plans plus construits. Au montage, les deux regards se complètent dans un même film."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Où intervenez-vous ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On est basés entre Paris, Lille et Arras. Votre événement est ailleurs ? Indiquez-le dans votre demande, on regarde ensemble."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Combien ça coûte ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Chaque projet est différent. Écrivez-nous quelques mots sur votre événement : on vous envoie un devis gratuit et détaillé sous 24 h, sans engagement."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Qu’est-ce qui est compris ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Le matériel professionnel 4K (caméras, optiques, éclairage, micros), le montage, l’étalonnage, le mixage, les exports adaptés à vos supports, l’assurance responsabilité civile professionnelle et l’archivage de vos fichiers pendant 6 mois."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "En combien de temps reçoit-on le film ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Entre 10 jours ouvrés et 3 semaines, selon la durée du film et le nombre de formats. Le délai exact est écrit sur votre devis. Besoin du film plus vite ? Précisez-le dans votre demande."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Comment se passe le paiement ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Un acompte de 50 % à la signature du devis réserve votre date de tournage. Le solde est réglé à la livraison."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Et si l’événement est reporté ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Le report ou l’annulation est sans frais jusqu’à 7 jours avant le tournage."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Vous nous aidez à publier ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui. Des formats verticaux pour vos réseaux et un plan de publication (quoi poster, quand, avec quelle légende) peuvent être ajoutés à votre demande."
+     }
+    }
+   ]
+  }
+ ]
+}
   </script>
 </head>
 <body>
@@ -370,7 +510,7 @@
       </svg>
     </div>
     <div class="ft-row">
-      <p>© <span id="year">2026</span> Kelik — Arthur &amp; Adrien · Paris · Lille · Arras</p>
+      <p>© <span id="year">2026</span> Kelik — Arthur &amp; Adrien, vidéastes événementiels · Paris · Lille · Arras</p>
       <p class="ft-links">
         <a href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener">Instagram</a>
         <a href="charte.html">Kit graphique</a>
