@@ -16,7 +16,8 @@
      donné, FormSubmit envoie un e-mail d'activation à cette adresse (un clic, une seule fois).
      ========================================================= */
   const DEVIS_EMAIL = 'arthur@kelik.fr';
-  const DEVIS_ENDPOINT = `https://formsubmit.co/ajax/${DEVIS_EMAIL}`;
+  // Identifiant FormSubmit lié à arthur@kelik.fr : l'adresse n'apparaît plus dans le code public (moins de spam)
+  const DEVIS_ENDPOINT = 'https://formsubmit.co/ajax/d6546fe14a962d28f95fad04407c39e6';
   const TARIFS = {
     forfaits: {
       essentiel: { nom: 'Essentiel', prix: 1100, jours: 1, verticaux: 0, inclus: [], filmLong: false, detail: '1 journée · 1 film de 90 à 300 s · 1 retouche · 10 jours ouvrés' },
@@ -609,7 +610,7 @@
       if (contact.elements._honey.value) { contact.reset(); dire('Merci, votre message est bien parti. On vous répond sous 24 h.', 'ok'); return; }
       cBtn.setAttribute('aria-busy', 'true'); cBtn.textContent = 'Envoi…'; dire('');
       try {
-        const res = await fetch(DEVIS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `Message depuis le site — ${mail}`, _template: 'table', _captcha: 'false', email: mail, Message: texte }) });
+        const res = await fetch(DEVIS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ _subject: `Message de ${mail} (site Kelik)`, _template: 'basic', _captcha: 'false', _replyto: mail, email: mail, message: texte }) });
         const out = await res.json().catch(() => ({}));
         if (!res.ok || String(out.success) === 'false') throw new Error(out.message || res.status);
         contact.reset(); dire('Merci, votre message est bien parti. On vous répond sous 24 h.', 'ok');
