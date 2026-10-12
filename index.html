@@ -83,7 +83,7 @@
     <a href="#methode">Méthode</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <button class="btn btn-sm hd-cta" type="button" data-open-devis>Faire ma demande</button>
+  <a class="btn btn-sm hd-cta" href="#demande" data-contact>Nous contacter</a>
   <button class="hd-burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="hd-nav"><span></span><span></span></button>
 </header>
 
@@ -105,7 +105,7 @@
     </h1>
     <p class="hero-lead rise" style="--d:.3s">Teasers, aftermovies, films : Arthur &amp; Adrien captent votre événement à deux caméras et en gardent tout le mood.</p>
     <div class="actions rise" style="--d:.42s">
-      <button class="btn" type="button" data-open-devis>Faire ma demande</button>
+      <a class="btn" href="#demande" data-contact>Nous contacter</a>
     </div>
   </div>
 
@@ -314,7 +314,7 @@
     <div class="faq-list">
       <details class="qa rv"><summary><span>Vous venez à deux sur chaque tournage ?</span><i aria-hidden="true"></i></summary><p>Oui, toujours. Arthur et Adrien filment ensemble : l’un au cœur de l’action, l’autre sur des plans plus construits. Au montage, les deux regards se complètent dans un même film.</p></details>
       <details class="qa rv"><summary><span>Où intervenez-vous ?</span><i aria-hidden="true"></i></summary><p>On est basés entre Paris, Lille et Arras. Votre événement est ailleurs ? Indiquez-le dans votre demande, on regarde ensemble.</p></details>
-      <details class="qa rv"><summary><span>Combien ça coûte ?</span><i aria-hidden="true"></i></summary><p>Chaque projet est différent. Décrivez votre événement en trois minutes : on vous envoie un devis gratuit et détaillé sous 24 h, sans engagement.</p></details>
+      <details class="qa rv"><summary><span>Combien ça coûte ?</span><i aria-hidden="true"></i></summary><p>Chaque projet est différent. Écrivez-nous quelques mots sur votre événement : on vous envoie un devis gratuit et détaillé sous 24 h, sans engagement.</p></details>
       <details class="qa rv"><summary><span>Qu’est-ce qui est compris ?</span><i aria-hidden="true"></i></summary><p>Le matériel professionnel 4K (caméras, optiques, éclairage, micros), le montage, l’étalonnage, le mixage, les exports adaptés à vos supports, l’assurance responsabilité civile professionnelle et l’archivage de vos fichiers pendant 6 mois.</p></details>
       <details class="qa rv"><summary><span>En combien de temps reçoit-on le film ?</span><i aria-hidden="true"></i></summary><p>Entre 10 jours ouvrés et 3 semaines, selon la durée du film et le nombre de formats. Le délai exact est écrit sur votre devis. Besoin du film plus vite ? Précisez-le dans votre demande.</p></details>
       <details class="qa rv"><summary><span>Comment se passe le paiement ?</span><i aria-hidden="true"></i></summary><p>Un acompte de 50 % à la signature du devis réserve votre date de tournage. Le solde est réglé à la livraison.</p></details>
@@ -380,7 +380,7 @@
   </div>
 </footer>
 
-<button class="m-cta" id="m-cta" type="button" data-open-devis>Faire ma demande</button>
+<a class="m-cta" id="m-cta" href="#demande" data-contact>Nous contacter</a>
 
 <!-- ============ LECTEUR ============ -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
@@ -392,7 +392,7 @@
       <p class="lb-meta" id="lb-meta"></p>
       <p class="lb-note" id="lb-note"></p>
       <a class="link" id="lb-link" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener">Voir sur Instagram</a>
-      <button class="btn btn-sm" type="button" data-open-devis data-lb-close>Un projet similaire ?</button>
+      <a class="btn btn-sm" href="#demande" data-contact data-lb-close>Un projet similaire ?</a>
     </div>
   </div>
   <button class="x lb-close" type="button" data-lb-close aria-label="Fermer"></button>
@@ -400,229 +400,6 @@
   <button class="arrow lb-next" type="button" aria-label="Film suivant"></button>
 </div>
 
-<!-- ============ QUESTIONNAIRE « FAIRE MA DEMANDE » ============ -->
-<div class="dv" id="dv" role="dialog" aria-modal="true" aria-labelledby="dv-title" hidden>
-  <div class="dv-top">
-    <span class="dv-brand" data-klogo data-outline="k1"></span>
-    <p class="label" id="dv-step-label">Étape 1 sur 6</p>
-    <button class="x" type="button" id="dv-close" aria-label="Fermer la demande"></button>
-  </div>
-  <div class="dv-progress" aria-hidden="true"><span id="dv-bar"></span></div>
-
-  <form class="dv-form" id="dv-form" novalidate>
-    <input type="text" name="_honey" class="dv-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-    <!-- 1. L’événement -->
-    <section class="dv-step" data-step="1">
-      <h2 id="dv-title">Quel événement <span class="outline">filme-t-on</span> ?</h2>
-      <fieldset><legend>Type d’événement <em aria-hidden="true">*</em></legend>
-        <div class="opts">
-          <label><input type="radio" name="type" value="Soirée / club"><span>Soirée / club</span></label>
-          <label><input type="radio" name="type" value="Festival / concert"><span>Festival / concert</span></label>
-          <label><input type="radio" name="type" value="Séminaire / convention"><span>Séminaire / convention</span></label>
-          <label><input type="radio" name="type" value="Lancement / inauguration"><span>Lancement / inauguration</span></label>
-          <label><input type="radio" name="type" value="Événement sportif"><span>Événement sportif</span></label>
-          <label><input type="radio" name="type" value="Gala / cérémonie"><span>Gala / cérémonie</span></label>
-          <label><input type="radio" name="type" value="Salon / portes ouvertes"><span>Salon / portes ouvertes</span></label>
-          <label><input type="radio" name="type" value="Autre"><span>Autre</span></label>
-        </div>
-      </fieldset>
-      <div class="dv-fields">
-        <label class="fld"><span>Nom de l’événement</span><input type="text" name="evenement" placeholder="Ex. Les 10 ans du club"></label>
-        <label class="fld"><span>Date</span><input type="date" name="date"></label>
-        <label class="fld"><span>Ville <em aria-hidden="true">*</em></span><input type="text" name="ville" placeholder="Paris, Lille, Arras…" autocomplete="address-level2" required></label>
-        <label class="fld"><span>Lieu</span><input type="text" name="lieu" placeholder="Salle, stade, entreprise…"></label>
-      </div>
-      <fieldset><legend>Nombre de personnes attendues</legend>
-        <div class="opts">
-          <label><input type="radio" name="public" value="moins de 50"><span>Moins de 50</span></label>
-          <label><input type="radio" name="public" value="50 à 200"><span>50 à 200</span></label>
-          <label><input type="radio" name="public" value="200 à 500"><span>200 à 500</span></label>
-          <label><input type="radio" name="public" value="500 à 1 000"><span>500 à 1 000</span></label>
-          <label><input type="radio" name="public" value="plus de 1 000"><span>Plus de 1 000</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Ça se passe</legend>
-        <div class="opts">
-          <label><input type="radio" name="cadre" value="en intérieur"><span>En intérieur</span></label>
-          <label><input type="radio" name="cadre" value="en extérieur"><span>En extérieur</span></label>
-          <label><input type="radio" name="cadre" value="en intérieur et en extérieur"><span>Les deux</span></label>
-        </div>
-      </fieldset>
-      <p class="dv-err" role="alert"></p>
-    </section>
-
-    <!-- 2. Le tournage -->
-    <section class="dv-step" data-step="2" hidden>
-      <h2>Combien de temps <span class="outline">sur place</span> ?</h2>
-      <div class="steppers">
-        <div class="stepper"><span>Nombre de jours à filmer</span><div><button type="button" data-dec="jours" aria-label="Retirer un jour">−</button><output id="o-jours">1</output><button type="button" data-inc="jours" aria-label="Ajouter un jour">+</button></div><input type="hidden" name="jours" value="1" data-default="1"></div>
-      </div>
-      <fieldset><legend>Notre présence, chaque jour <em aria-hidden="true">*</em></legend>
-        <div class="opts">
-          <label><input type="radio" name="presence" value="demi"><span>Une demi-journée · jusqu’à 4 h</span></label>
-          <label><input type="radio" name="presence" value="jour"><span>Une journée · jusqu’à 8 h</span></label>
-          <label><input type="radio" name="presence" value="long"><span>Journée et soirée · plus de 8 h</span></label>
-        </div>
-      </fieldset>
-      <div class="dv-fields">
-        <label class="fld"><span>Heure de début</span><input type="time" name="debut"></label>
-        <label class="fld"><span>Heure de fin</span><input type="time" name="fin"></label>
-      </div>
-      <fieldset><legend>Nombre de lieux de tournage</legend>
-        <div class="opts">
-          <label><input type="radio" name="lieux" value="1 lieu" checked><span>Un seul</span></label>
-          <label><input type="radio" name="lieux" value="2 lieux"><span>Deux</span></label>
-          <label><input type="radio" name="lieux" value="3 lieux ou plus"><span>Trois ou plus</span></label>
-        </div>
-      </fieldset>
-      <p class="dv-err" role="alert"></p>
-    </section>
-
-    <!-- 3. Ce qu'on capte -->
-    <section class="dv-step" data-step="3" hidden>
-      <h2>Que faut-il <span class="outline">capter</span> ?</h2>
-      <p class="dv-hint">On filme toujours les meilleurs moments et l’ambiance. Dites-nous s’il faut aller plus loin.</p>
-      <fieldset><legend>Des moments à filmer en entier ? <small>Plusieurs choix possibles</small></legend>
-        <div class="opts">
-          <label><input type="checkbox" name="int_discours"><span>Discours, prises de parole</span></label>
-          <label><input type="checkbox" name="int_scene"><span>Concert, spectacle, show</span></label>
-          <label><input type="checkbox" name="int_conf"><span>Conférence, table ronde</span></label>
-          <label><input type="checkbox" name="int_match"><span>Match, compétition</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Des interviews ?</legend>
-        <div class="opts">
-          <label><input type="radio" name="interviews" value="non" checked><span>Non</span></label>
-          <label><input type="radio" name="interviews" value="chaud"><span>Quelques réactions à chaud</span></label>
-          <label><input type="radio" name="interviews" value="posees"><span>Des interviews posées</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Des images au drone ?</legend>
-        <div class="opts">
-          <label><input type="radio" name="drone" value="non" checked><span>Non</span></label>
-          <label><input type="radio" name="drone" value="oui"><span>Oui</span></label>
-          <label><input type="radio" name="drone" value="avoir"><span>À voir selon le lieu</span></label>
-        </div>
-      </fieldset>
-    </section>
-
-    <!-- 4. Les films -->
-    <section class="dv-step" data-step="4" hidden>
-      <h2>Quels films <span class="outline">recevez-vous</span> ?</h2>
-      <fieldset><legend>Le film principal <em aria-hidden="true">*</em></legend>
-        <div class="opts">
-          <label><input type="radio" name="film" value="teaser"><span>Un teaser · moins d’1 min</span></label>
-          <label><input type="radio" name="film" value="court"><span>Un aftermovie · 1 à 2 min</span></label>
-          <label><input type="radio" name="film" value="complet"><span>Un film complet · 3 à 5 min</span></label>
-          <label><input type="radio" name="film" value="long"><span>Un film long · 5 à 8 min</span></label>
-          <label><input type="radio" name="film" value="conseil"><span>Je ne sais pas, conseillez-moi</span></label>
-        </div>
-      </fieldset>
-      <div class="steppers">
-        <div class="stepper"><span>Vidéos verticales pour vos réseaux <small>Reels, TikTok, Shorts</small></span><div><button type="button" data-dec="verticaux" aria-label="Retirer une vidéo verticale">−</button><output id="o-verticaux">0</output><button type="button" data-inc="verticaux" aria-label="Ajouter une vidéo verticale">+</button></div><input type="hidden" name="verticaux" value="0" data-default="0"></div>
-      </div>
-      <fieldset><legend>Où sera diffusé le film ? <small>Plusieurs choix possibles</small></legend>
-        <div class="opts">
-          <label><input type="checkbox" name="dif_reseaux"><span>Réseaux sociaux</span></label>
-          <label><input type="checkbox" name="dif_site"><span>Site web</span></label>
-          <label><input type="checkbox" name="dif_interne"><span>En interne</span></label>
-          <label><input type="checkbox" name="dif_ecran"><span>Sur écran, lors d’un événement</span></label>
-          <label><input type="checkbox" name="dif_pub"><span>Publicité payante ou télévision</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Quand vous faut-il le film ?</legend>
-        <div class="opts">
-          <label><input type="radio" name="delai" value="3 semaines ou plus"><span>Sous 3 semaines ou plus</span></label>
-          <label><input type="radio" name="delai" value="10 jours"><span>Sous 10 jours</span></label>
-          <label><input type="radio" name="delai" value="72 h"><span>Sous 72 h</span></label>
-          <label><input type="radio" name="delai" value="le lendemain"><span>Dès le lendemain</span></label>
-        </div>
-      </fieldset>
-      <p class="dv-err" role="alert"></p>
-    </section>
-
-    <!-- 5. Les finitions -->
-    <section class="dv-step" data-step="5" hidden>
-      <h2>Les <span class="outline">finitions</span>.</h2>
-      <fieldset><legend>Sous-titres</legend>
-        <div class="opts">
-          <label><input type="radio" name="soustitres" value="aucun" checked><span>Aucun</span></label>
-          <label><input type="radio" name="soustitres" value="fr"><span>En français</span></label>
-          <label><input type="radio" name="soustitres" value="fr-en"><span>En français et en anglais</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Habillage du film</legend>
-        <div class="opts">
-          <label><input type="radio" name="habillage" value="simple" checked><span>Simple · un titre et votre logo</span></label>
-          <label><input type="radio" name="habillage" value="anime"><span>Animé à vos couleurs · logo, titres, bandeaux</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Musique</legend>
-        <div class="opts">
-          <label><input type="radio" name="musique" value="kelik" checked><span>Choisie par Kelik, libre de droits</span></label>
-          <label><input type="radio" name="musique" value="titre"><span>Un titre précis que vous avez en tête</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>En plus <small>Rien n’est obligatoire</small></legend>
-        <div class="checks">
-          <label><input type="checkbox" name="voixoff"><span><b>Voix off professionnelle</b><small>Enregistrée par un comédien</small></span></label>
-          <label><input type="checkbox" name="rushs"><span><b>Toutes les images brutes</b><small>Livrées sur votre disque</small></span></label>
-          <label><input type="checkbox" name="suivi"><span><b>Plan de publication</b><small>Quoi poster, quand, avec quelle légende</small></span></label>
-        </div>
-      </fieldset>
-    </section>
-
-    <!-- 6. Coordonnées -->
-    <section class="dv-step" data-step="6" hidden>
-      <h2>Où vous <span class="outline">répondre</span> ?</h2>
-      <div class="dv-fields">
-        <label class="fld"><span>Prénom et nom <em aria-hidden="true">*</em></span><input type="text" name="nom" autocomplete="name" required></label>
-        <label class="fld"><span>Structure</span><input type="text" name="structure" autocomplete="organization" placeholder="Entreprise, association, lieu…"></label>
-        <label class="fld"><span>E-mail <em aria-hidden="true">*</em></span><input type="email" name="email" autocomplete="email" inputmode="email" required></label>
-        <label class="fld"><span>Téléphone</span><input type="tel" name="tel" autocomplete="tel" inputmode="tel"></label>
-      </div>
-      <fieldset><legend>Vous préférez être recontacté</legend>
-        <div class="opts">
-          <label><input type="radio" name="recontact" value="par e-mail" checked><span>Par e-mail</span></label>
-          <label><input type="radio" name="recontact" value="par téléphone"><span>Par téléphone</span></label>
-          <label><input type="radio" name="recontact" value="par WhatsApp"><span>Par WhatsApp</span></label>
-        </div>
-      </fieldset>
-      <fieldset><legend>Comment nous avez-vous connus ?</legend>
-        <div class="opts">
-          <label><input type="radio" name="source" value="Instagram"><span>Instagram</span></label>
-          <label><input type="radio" name="source" value="Bouche-à-oreille"><span>Bouche-à-oreille</span></label>
-          <label><input type="radio" name="source" value="Google"><span>Google</span></label>
-          <label><input type="radio" name="source" value="Un de nos films"><span>Un de nos films</span></label>
-          <label><input type="radio" name="source" value="Autre"><span>Autre</span></label>
-        </div>
-      </fieldset>
-      <div class="dv-fields">
-        <label class="fld"><span>Budget envisagé</span><input type="text" name="budget" placeholder="Facultatif"></label>
-        <label class="fld wide"><span>Un mot sur votre projet</span><textarea name="message" rows="3" placeholder="L’ambiance, les moments à ne pas manquer, ce que vous voulez garder en souvenir…"></textarea></label>
-      </div>
-      <p class="dv-rgpd">Vos réponses servent uniquement à préparer votre devis et ne sont jamais revendues. <a href="mentions-legales.html#donnees" target="_blank" rel="noopener">Données &amp; RGPD</a></p>
-      <p class="dv-err" role="alert"></p>
-      <div class="dv-fallback" id="dv-fallback" hidden></div>
-    </section>
-
-    <!-- Confirmation -->
-    <section class="dv-step dv-done" data-step="7" hidden>
-      <p class="label">Demande envoyée</p>
-      <h2>Merci. On vous répond <span class="outline">sous 24 h</span>.</h2>
-      <p class="dv-hint" id="dv-done-text">Arthur et Adrien ont bien reçu votre demande. Vous recevrez un devis détaillé par e-mail.</p>
-      <ul class="dv-recap" id="dv-recap"></ul>
-      <button class="btn" type="button" id="dv-finish">Retour au site</button>
-    </section>
-  </form>
-
-  <div class="dv-nav" id="dv-nav">
-    <button class="link" type="button" id="dv-back">Retour</button>
-    <button class="btn" type="button" id="dv-next">Continuer</button>
-  </div>
-</div>
-
-<script src="site.js?v=18" defer></script>
+<script src="site.js?v=19" defer></script>
 </body>
 </html>

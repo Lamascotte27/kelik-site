@@ -9,33 +9,10 @@
   const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   const store = { get: k => { try { return sessionStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { sessionStorage.setItem(k, v); } catch { /* navigation privée */ } } };
 
-  /* =========================================================
-     RÉGLAGES DU DEVIS — grille tarifaire 2026 (montants HT, jamais affichés au visiteur)
-     Le visiteur décrit son événement ; le forfait le plus adapté est choisi ici, en interne.
-     Les demandes partent par e-mail via FormSubmit : au tout premier envoi depuis un site
-     donné, FormSubmit envoie un e-mail d'activation à cette adresse (un clic, une seule fois).
-     ========================================================= */
+  /* ---------- Contact : les messages partent par e-mail via FormSubmit vers arthur@kelik.fr ---------- */
   const DEVIS_EMAIL = 'arthur@kelik.fr';
-  // Identifiant FormSubmit lié à arthur@kelik.fr : l'adresse n'apparaît plus dans le code public (moins de spam)
+  // Identifiant FormSubmit lié à arthur@kelik.fr : l'adresse n'apparaît pas dans le code public (moins de spam)
   const DEVIS_ENDPOINT = 'https://formsubmit.co/ajax/d6546fe14a962d28f95fad04407c39e6';
-  const TARIFS = {
-    forfaits: {
-      essentiel: { nom: 'Essentiel', prix: 1100, jours: 1, verticaux: 0, inclus: [], filmLong: false, detail: '1 journée · 1 film de 90 à 300 s · 1 retouche · 10 jours ouvrés' },
-      signature: { nom: 'Signature', prix: 1900, jours: 2, verticaux: 2, inclus: ['soustitres'], filmLong: true, detail: '2 journées · repérage · 1 film de 2 à 8 min + 2 formats verticaux · sous-titres · 2 retouches · 3 semaines' },
-      surmesure: { nom: 'Sur-mesure', prix: 2900, jours: 3, verticaux: 2, inclus: ['soustitres', 'motion', 'voixoff'], filmLong: true, des: true, detail: '3 journées et + · film principal + déclinaisons · motion design, voix off · 3 retouches' }
-    },
-    jour: 800, demi: 450, vertical: 150,
-    options: {
-      drone: { nom: 'Captation par drone', prix: 350 },
-      multicam: { nom: 'Deuxième caméra (multicam)', prix: 250 },
-      soustitres: { nom: 'Sous-titrage incrusté (FR)', prix: 120, note: 'film principal' },
-      anglais: { nom: 'Version anglaise sous-titrée', prix: 180, note: 'film principal' },
-      motion: { nom: 'Habillage motion design sur charte', prix: 400, des: true },
-      voixoff: { nom: 'Voix off professionnelle', prix: 300, des: true },
-      rushs: { nom: 'Livraison des rushs bruts', prix: 200 }
-    }
-  };
-  const eur = n => `${n.toLocaleString('fr-FR')} €`;
 
   $('#year').textContent = new Date().getFullYear();
 
@@ -104,7 +81,7 @@
     const svg = $('#intro-svg');
     const LOGO_C = [1002, 657.6], K_C = [398.5, 658];
     const fitW = () => 1584.6 / (innerWidth < 700 ? .84 : .56);
-    const setVB = (cx, cy, w) => { const h = w * innerHeight / innerWidth; svg.setAttribute('viewBox', `${cx - w / 2} ${cy - h / 2} ${w} ${h}`); };
+    const setVB = (cx, cy, w) => { const h = w * innerHeight / innerWidth; if (!isFinite(h) || !isFinite(w)) return; svg.setAttribute('viewBox', `${cx - w / 2} ${cy - h / 2} ${w} ${h}`); };
     setVB(...LOGO_C, fitW());
     requestAnimationFrame(() => intro.classList.add('play'));
     let zooming = false;
@@ -223,7 +200,7 @@
   /* ---------- Formats courts : le mur d'extraits muets, lus seulement quand ils sont à l'écran ---------- */
   const reelVids = $$('#wall video'), seen = new Set();
   syncReels = () => {
-    const ok = !reduced && !paused && !document.hidden && !navigator.connection?.saveData && lb.hidden && dv.hidden;
+    const ok = !reduced && !paused && !document.hidden && !navigator.connection?.saveData && lb.hidden;
     reelVids.forEach(v => {
       if (ok && seen.has(v)) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); }
       else v.pause();
@@ -304,296 +281,14 @@
   addEventListener('resize', () => requestAnimationFrame(frame));
   frame();
 
-  /* =========================================================
-     QUESTIONNAIRE « FAIRE MA DEMANDE »
-     ========================================================= */
-  const dv = $('#dv'), form = $('#dv-form'), dvNav = $('#dv-nav');
-  const dvSteps = $$('.dv-step', dv), back = $('#dv-back'), next = $('#dv-next');
-  const fallback = $('#dv-fallback');
-  const LAST = 6;
-  let cur = 1, dvFocus = null;
-  const stepEl = n => dvSteps.find(s => +s.dataset.step === n);
-
-  const showStep = n => {
-    cur = n;
-    dvSteps.forEach(s => { s.hidden = +s.dataset.step !== n; });
-    const done = n > LAST;
-    dvNav.hidden = done; dvNav.style.display = done ? 'none' : '';
-    $('#dv-step-label').textContent = done ? 'Terminé' : `Étape ${n} sur ${LAST}`;
-    $('#dv-bar').style.transform = `scaleX(${Math.min(1, n / LAST)})`;
-    back.disabled = n === 1;
-    next.textContent = n === LAST ? 'Envoyer ma demande' : 'Continuer';
-    form.scrollTop = 0;
-    const h = $('h2', stepEl(n));
-    h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true });
-  };
-  const openDv = () => {
-    closeLbSilently();
-    dvFocus = document.activeElement;
+  /* ---------- Tous les boutons « Nous contacter » mènent au formulaire du bas ---------- */
+  document.querySelectorAll('[data-contact]').forEach(btn => btn.addEventListener('click', e => {
+    e.preventDefault();
     setMenu(false);
-    dv.hidden = false; html.classList.add('dv-open'); syncReels();
-    showStep(cur > LAST ? 1 : cur);
-  };
-  const closeDv = () => { dv.hidden = true; html.classList.remove('dv-open'); dvFocus?.focus?.(); syncReels(); };
-  const closeLbSilently = () => { if (!lb.hidden) { lb.hidden = true; html.classList.remove('lb-open'); lbMedia.innerHTML = ''; } };
-  $$('[data-open-devis]').forEach(b => b.addEventListener('click', () => openDv()));
-  $('#dv-close').addEventListener('click', closeDv);
-  const resetDv = () => {
-    form.reset();
-    $$('input[type="hidden"]', form).forEach(i => { i.value = i.dataset.default; $(`#o-${i.name}`).textContent = i.dataset.default; });
-    fallback.hidden = true; cur = 1;
-    updatePrice();
-  };
-  $('#dv-finish').addEventListener('click', () => { resetDv(); closeDv(); });
-
-  let updatePrice = () => {}; // remplacé plus bas, en mode test uniquement
-
-  // Compteurs (+ / −)
-  const LIMITS = { jours: [1, 10], verticaux: [0, 30] };
-  const bump = (name, d) => {
-    const input = form.elements[name];
-    const v = clamp(+input.value + d, ...LIMITS[name]);
-    input.value = v; $(`#o-${name}`).textContent = v;
-    updatePrice();
-  };
-  $$('[data-inc]', form).forEach(b => b.addEventListener('click', () => bump(b.dataset.inc, 1)));
-  $$('[data-dec]', form).forEach(b => b.addEventListener('click', () => bump(b.dataset.dec, -1)));
-
-  // Validation par étape
-  const setErr = (step, msg) => { const el = $('.dv-err', stepEl(step)); if (el) el.textContent = msg || ''; };
-  const validate = n => {
-    setErr(n, '');
-    const el = form.elements;
-    if (n === 1) {
-      if (!el.type.value) { setErr(1, 'Choisissez le type d’événement pour continuer.'); return false; }
-      el.ville.setAttribute('aria-invalid', !el.ville.value.trim());
-      if (!el.ville.value.trim()) { setErr(1, 'Indiquez la ville de l’événement.'); el.ville.focus(); return false; }
-    }
-    if (n === 2 && !el.presence.value) { setErr(2, 'Indiquez combien de temps on doit être présents chaque jour.'); return false; }
-    if (n === 4 && !el.film.value) { setErr(4, 'Choisissez le film principal, ou « Je ne sais pas ».'); return false; }
-    if (n === LAST) {
-      const nom = el.nom, email = el.email;
-      nom.setAttribute('aria-invalid', !nom.value.trim());
-      email.setAttribute('aria-invalid', !email.checkValidity() || !email.value.trim());
-      if (!nom.value.trim()) { setErr(LAST, 'Indiquez votre nom.'); nom.focus(); return false; }
-      if (!email.value.trim() || !email.checkValidity()) { setErr(LAST, 'Indiquez un e-mail valide pour recevoir votre devis (ex. vous@exemple.fr).'); email.focus(); return false; }
-    }
-    return true;
-  };
-
-  // Lecture des réponses
-  const PRESENCE = { demi: [.5, 'une demi-journée (jusqu’à 4 h)'], jour: [1, 'une journée (jusqu’à 8 h)'], long: [1.5, 'journée et soirée (plus de 8 h)'] };
-  const FILMS = { teaser: 'Teaser de moins d’1 min', court: 'Aftermovie de 1 à 2 min', complet: 'Film complet de 3 à 5 min', long: 'Film long de 5 à 8 min', conseil: 'Durée à conseiller' };
-  const checkedLabels = prefix => $$(`input[type="checkbox"][name^="${prefix}"]:checked`, form).map(i => i.nextElementSibling.textContent.trim());
-  const readForm = () => {
-    const f = Object.fromEntries(new FormData(form).entries());
-    for (const i of $$('input[type="checkbox"]', form)) f[i.name] = i.checked;
-    f.jours = +f.jours || 1; f.verticaux = +f.verticaux || 0;
-    f.unites = f.jours * (PRESENCE[f.presence]?.[0] ?? 1);
-    f.integral = checkedLabels('int_'); f.diffusion = checkedLabels('dif_');
-    f.dateFr = f.date ? new Date(f.date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : 'non précisée';
-    f.dans = f.date ? Math.ceil((new Date(f.date) - Date.now()) / 864e5) : null;
-    return f;
-  };
-
-  // Calcul du devis (interne : jamais affiché sur le site).
-  // On chiffre la demande sur chacun des trois forfaits de la grille, puis on retient le moins cher.
-  const chiffrer = (f, cle) => {
-    const fo = TARIFS.forfaits[cle], O = TARIFS.options;
-    if (f.film === 'long' && !fo.filmLong) return null; // Essentiel : film de 90 à 300 s
-    const lignes = [[`Forfait ${fo.nom}`, fo.prix, fo.detail]];
-    let des = !!fo.des;
-    const plus = (k, n = 1) => { const o = O[k]; lignes.push([o.nom + (o.des ? ' (dès)' : ''), o.prix * n, o.note]); if (o.des) des = true; };
-    const extra = Math.max(0, f.unites - fo.jours);
-    if (Math.floor(extra)) lignes.push([`Journée de tournage supplémentaire × ${Math.floor(extra)}`, TARIFS.jour * Math.floor(extra)]);
-    if (extra % 1) lignes.push(['Demi-journée de tournage supplémentaire × 1', TARIFS.demi]);
-    if (f.drone === 'oui') plus('drone');
-    if (f.integral.length || f.interviews === 'posees') plus('multicam');
-    if (f.soustitres !== 'aucun' && !fo.inclus.includes('soustitres')) plus('soustitres');
-    if (f.soustitres === 'fr-en') plus('anglais');
-    if (f.habillage === 'anime' && !fo.inclus.includes('motion')) plus('motion');
-    if (f.voixoff && !fo.inclus.includes('voixoff')) plus('voixoff');
-    if (f.rushs) plus('rushs');
-    const vert = Math.max(0, f.verticaux - fo.verticaux);
-    if (vert) lignes.push([`Format vertical supplémentaire (9:16) × ${vert}`, TARIFS.vertical * vert, fo.verticaux ? `${fo.verticaux} déjà compris dans le forfait` : '']);
-    return { cle, nom: fo.nom, lignes, des, total: lignes.reduce((s, l) => s + l[1], 0) };
-  };
-  const buildQuote = f => {
-    const tous = Object.keys(TARIFS.forfaits).map(k => chiffrer(f, k)).filter(Boolean);
-    const q = tous.reduce((m, x) => (x.total < m.total ? x : m));
-    const v = [];
-    const ville = (f.ville || '').toLowerCase();
-    if (!ville) v.push('Ville non précisée → déplacement à vérifier');
-    else if (!/arras|lille|paris/.test(ville)) v.push(`Déplacement (${f.ville}) : non compris. Grille : 0,60 €/km au-delà de 50 km d’Arras`);
-    else if (/paris/.test(ville)) v.push('Paris : déplacement non compté. Grille : 0,60 €/km au-delà de 50 km d’Arras, à décider');
-    if (f.dans !== null && f.dans < 0) v.push('La date indiquée est déjà passée → à confirmer');
-    else if (f.dans !== null && f.dans <= 14) v.push(`Événement dans ${f.dans} jour(s) → répondre en priorité`);
-    if (!f.date) v.push('Date non précisée');
-    if (f.unites < 1) v.push('Une demi-journée seulement : chiffré sur le forfait Essentiel (1 journée), geste possible');
-    if (f.presence === 'long') v.push(`Journée et soirée : comptée 1 journée + 1 demi-journée par jour (soit ${String(f.unites).replace('.', ',')} journées)`);
-    if (f.lieux !== '1 lieu') v.push(`${f.lieux} de tournage → vérifier les temps de trajet entre les lieux`);
-    if (f.integral.length) v.push(`Captation en entier demandée (${f.integral.join(', ')}) : caméra fixe comptée ; le montage d’un film intégral est hors grille → à chiffrer`);
-    if (f.interviews === 'posees') v.push('Interviews posées : deuxième caméra comptée, prévoir micro et lumière');
-    if (f.drone === 'avoir') v.push(`Drone à confirmer selon le lieu : + ${eur(TARIFS.options.drone.prix)} s’il est retenu (non compté)`);
-    if (f.drone === 'oui') v.push('Drone : vérifier la zone de vol et la météo');
-    if (f.film === 'conseil') v.push('Durée du film principal à conseiller');
-    if (f.film === 'teaser') v.push('Teaser de moins d’1 min : plus court que le film du forfait (90 s minimum), à ajuster');
-    if (f.soustitres !== 'aucun' && f.verticaux) v.push(`Sous-titres comptés pour le film principal seulement ; la grille est « par film livré » (${f.verticaux} vidéo(s) verticale(s) en plus)`);
-    if (f.dif_pub) v.push('Diffusion en publicité payante ou télévision : non comprise, droits d’usage à définir au devis');
-    if (f.delai === '72 h' || f.delai === 'le lendemain') v.push(`Livraison ${f.delai === '72 h' ? 'sous 72 h' : 'dès le lendemain'} : hors grille (10 jours ouvrés à 3 semaines) → faisabilité et majoration à décider`);
-    if (f.delai === '10 jours' && q.cle !== 'essentiel') v.push(`Livraison sous 10 jours demandée, le forfait ${q.nom} annonce un délai plus long`);
-    if (f.musique === 'titre') v.push('Musique précise demandée : licence commerciale non comprise');
-    if (f.suivi) v.push('Plan de publication demandé : hors grille → à chiffrer');
-    if (q.cle === 'surmesure') v.push('Sur-mesure : 2 900 € est un point de départ, à affiner selon le périmètre');
-    return { ...q, tous, aVerifier: v, comparatif: tous.map(x => `${x.nom} ${eur(x.total)}${x.cle === q.cle ? ' (retenu)' : ''}`).join(' · ') };
-  };
-
-  /* ---------- Mode test, pour Arthur & Adrien : le prix se calcule en direct à côté du formulaire ----------
-     Activé seulement par ?devis=test dans l'adresse (?devis=off pour le couper). Jamais affiché aux visiteurs. */
-  let modeTest = false;
-  try {
-    const t = new URLSearchParams(location.search).get('devis');
-    if (t) sessionStorage.setItem('kelik-devis', t);
-    modeTest = (t || sessionStorage.getItem('kelik-devis')) === 'test';
-  } catch { /* stockage indisponible */ }
-  if (modeTest) {
-    const panel = document.createElement('aside');
-    panel.className = 'dvp'; panel.setAttribute('aria-label', 'Devis en direct (mode test)');
-    panel.innerHTML = `<button class="dvp-head" type="button" aria-expanded="false"><span class="dvp-tag">Mode test · invisible pour vos clients</span><span class="dvp-total"><small id="dvp-des"></small><b id="dvp-num">0</b><i>€ HT</i><em class="dvp-delta" id="dvp-delta"></em></span></button>
-      <div class="dvp-body"><p class="dvp-plan">Forfait retenu <b id="dvp-plan"></b></p><ul class="dvp-lines" id="dvp-lines"></ul><p class="dvp-acompte">Acompte 50 % <b id="dvp-acompte"></b></p>
-      <p class="dvp-h">Comparatif des forfaits</p><ul class="dvp-cmp" id="dvp-cmp"></ul><p class="dvp-h">À vérifier</p><ul class="dvp-check" id="dvp-check"></ul></div>`;
-    dvNav.before(panel); dv.classList.add('test');
-    const head = $('.dvp-head', panel), num = $('#dvp-num'), delta = $('#dvp-delta'), plan = $('#dvp-plan');
-    head.addEventListener('click', () => head.setAttribute('aria-expanded', panel.classList.toggle('open')));
-    const esc = s => String(s).replace(/</g, '&lt;');
-    const flash = (el, cls) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); };
-    let shown = 0, target = null, raf = 0, avant = new Map(), planAvant = '', signature = '';
-    const compte = to => {
-      cancelAnimationFrame(raf);
-      const from = shown, t0 = performance.now();
-      const tick = t => {
-        const k = reduced ? 1 : Math.min(1, (t - t0) / 500);
-        shown = Math.round(from + (to - from) * ease(k));
-        num.textContent = shown.toLocaleString('fr-FR');
-        if (k < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-    };
-    updatePrice = () => {
-      const q = buildQuote(readForm());
-      const sig = JSON.stringify([q.lignes, q.aVerifier, q.cle]);
-      if (sig === signature) return; // rien n'a bougé : on ne rejoue pas les animations
-      signature = sig;
-      $('#dvp-des').textContent = q.des ? 'à partir de' : '';
-      if (target !== null && q.total !== target) {
-        const d = q.total - target;
-        delta.textContent = `${d > 0 ? '+' : '−'} ${eur(Math.abs(d))}`;
-        delta.dataset.sens = d > 0 ? 'plus' : 'moins';
-        flash(delta, 'go');
-      }
-      if (q.total !== target) compte(q.total);
-      target = q.total;
-      plan.textContent = q.nom;
-      if (planAvant && planAvant !== q.nom) flash(plan, 'chg');
-      planAvant = q.nom;
-      const cle = l => l.replace(/ × \d+$/, '');
-      $('#dvp-lines').innerHTML = q.lignes.map(([l, p, n]) => {
-        const k = cle(l), etat = !avant.size ? '' : !avant.has(k) ? 'new' : avant.get(k) !== p ? 'chg' : '';
-        return `<li class="${etat}"><span>${esc(l)}${n ? `<small>${esc(n)}</small>` : ''}</span><b>${eur(p)}</b></li>`;
-      }).join('');
-      avant = new Map(q.lignes.map(([l, p]) => [cle(l), p]));
-      $('#dvp-acompte').textContent = eur(Math.round(q.total / 2));
-      $('#dvp-cmp').innerHTML = Object.entries(TARIFS.forfaits).map(([k, fo]) => {
-        const x = q.tous.find(t => t.cle === k);
-        return `<li class="${k === q.cle ? 'on' : ''}"><span>${fo.nom}</span><b>${x ? eur(x.total) : 'non adapté'}</b></li>`;
-      }).join('');
-      $('#dvp-check').innerHTML = q.aVerifier.length ? q.aVerifier.map(a => `<li>${esc(a)}</li>`).join('') : '<li>Rien à signaler</li>';
-    };
-    form.addEventListener('input', updatePrice);
-    updatePrice();
-    try { if (new URLSearchParams(location.search).get('devis') === 'test') addEventListener('load', () => setTimeout(() => openDv(), 400)); } catch { /* rien */ }
-  }
-
-  // Envoi : un essai, puis un second si le réseau a flanché
-  const post = async payload => {
-    const res = await fetch(DEVIS_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
-    const out = await res.json().catch(() => ({}));
-    if (!res.ok || String(out.success) === 'false') throw Object.assign(new Error(out.message || `HTTP ${res.status}`), { definitif: res.ok });
-  };
-
-  const send = async () => {
-    const f = readForm();
-    const q = buildQuote(f);
-    const montant = `${q.des ? 'à partir de ' : ''}${eur(q.total)} HT`;
-    const horaires = f.debut || f.fin ? ` · de ${f.debut || '?'} à ${f.fin || '?'}` : '';
-    const tournage = `${f.jours} jour(s) · ${PRESENCE[f.presence][1]}${horaires} · ${f.lieux}`;
-    const capter = [f.integral.length ? `À filmer en entier : ${f.integral.join(', ')}` : 'Meilleurs moments uniquement', { non: 'Pas d’interview', chaud: 'Réactions à chaud', posees: 'Interviews posées' }[f.interviews], { non: 'Pas de drone', oui: 'Drone : oui', avoir: 'Drone : à voir selon le lieu' }[f.drone]].join(' · ');
-    const films = `${FILMS[f.film]}${f.verticaux ? ` + ${f.verticaux} vidéo(s) verticale(s)` : ''}`;
-    const finitions = [{ aucun: 'Sans sous-titres', fr: 'Sous-titres français', 'fr-en': 'Sous-titres français et anglais' }[f.soustitres], f.habillage === 'anime' ? 'Habillage animé aux couleurs du client' : 'Habillage simple', f.musique === 'titre' ? 'Musique : un titre précis' : 'Musique choisie par Kelik', f.voixoff && 'Voix off', f.rushs && 'Images brutes', f.suivi && 'Plan de publication'].filter(Boolean).join(' · ');
-
-    // Une ligne du tableau par information : l'e-mail reste lisible quel que soit le webmail
-    const payload = { _subject: `Devis estimé ${montant} — ${f.type} — ${f.nom}`, _template: 'table', _captcha: 'false' };
-    payload['DEVIS ESTIMÉ'] = `${montant} — forfait ${q.nom}`;
-    payload['Acompte à prévoir (50 %)'] = eur(Math.round(q.total / 2));
-    q.lignes.forEach(([l, p, n], i) => { payload[`Calcul ${i + 1} · ${l}`] = `${eur(p)}${n ? ` — ${n}` : ''}`; });
-    payload['Comparatif des forfaits'] = q.comparatif;
-    q.aVerifier.forEach((a, i) => { payload[`À vérifier ${i + 1}`] = a; });
-    Object.assign(payload, {
-      Client: `${f.nom}${f.structure ? ` — ${f.structure}` : ''}`,
-      email: f.email,
-      Téléphone: f.tel || 'non renseigné',
-      'À recontacter': f.recontact,
-      Événement: `${f.type}${f.evenement ? ` — ${f.evenement}` : ''}`,
-      Date: f.dateFr,
-      Lieu: `${f.ville}${f.lieu ? ` — ${f.lieu}` : ''}${f.cadre ? ` · ${f.cadre}` : ''}`,
-      Public: f.public ? `${f.public} personnes` : 'non précisé',
-      Tournage: tournage,
-      'À capter': capter,
-      Films: films,
-      Diffusion: f.diffusion.length ? f.diffusion.join(', ') : 'non précisée',
-      'Livraison souhaitée': f.delai ? (f.delai.startsWith('le') ? f.delai : `sous ${f.delai}`) : 'non précisée',
-      Finitions: finitions,
-      'Budget annoncé': f.budget || 'non précisé',
-      'Connu par': f.source || 'non précisé',
-      'Message du client': f.message || '—'
-    });
-
-    const recap = [['Événement', `${f.type} · ${f.ville}${f.date ? ` · ${new Date(f.date).toLocaleDateString('fr-FR')}` : ''}`], ['Tournage', tournage], ['Films', films], ['Finitions', finitions]];
-    const done = () => {
-      $('#dv-recap').innerHTML = recap.map(([a, b]) => `<li><span>${a}</span>${b.replace(/</g, '&lt;')}</li>`).join('');
-      showStep(LAST + 1);
-    };
-    if (f._honey) return done(); // robot : on ne transmet rien
-
-    fallback.hidden = true;
-    next.setAttribute('aria-busy', 'true'); next.disabled = true; next.textContent = 'Envoi…';
-    try {
-      try { await post(payload); }
-      catch (e) { if (e.definitif) throw e; await new Promise(r => setTimeout(r, 1500)); await post(payload); }
-      done();
-    } catch (e) {
-      console.warn('[Kelik] Envoi de la demande impossible :', e.message);
-      // Secours : e-mail déjà rédigé, sans aucun montant (il passerait sous les yeux du client)
-      const body = ['Bonjour Kelik,', '', ...recap.map(([a, b]) => `${a} : ${b}`), `À capter : ${capter}`, `Diffusion : ${payload.Diffusion}`, `Livraison souhaitée : ${payload['Livraison souhaitée']}`, '', f.message || '', '', `— ${f.nom}${f.structure ? `, ${f.structure}` : ''}${f.tel ? ` · ${f.tel}` : ''}`].join('\n');
-      const mailto = `mailto:${DEVIS_EMAIL}?subject=${encodeURIComponent(`Demande de devis — ${f.type}`)}&body=${encodeURIComponent(body)}`;
-      fallback.innerHTML = `<p>Vos réponses sont prêtes. Il reste à les envoyer depuis votre messagerie : tout est déjà rédigé.</p><a class="btn" href="${mailto}">Envoyer par e-mail</a>`;
-      fallback.hidden = false; fallback.scrollIntoView({ block: 'nearest' });
-    } finally {
-      next.removeAttribute('aria-busy'); next.disabled = false;
-      if (cur === LAST) next.textContent = 'Envoyer ma demande';
-    }
-  };
-
-  next.addEventListener('click', () => {
-    if (!validate(cur)) return;
-    if (cur < LAST) showStep(cur + 1); else send();
-  });
-  back.addEventListener('click', () => { if (cur > 1) showStep(cur - 1); });
-  form.addEventListener('submit', e => { e.preventDefault(); next.click(); });
-  form.addEventListener('change', () => setErr(cur, ''));
-  form.addEventListener('input', e => {
-    if (e.target.getAttribute?.('aria-invalid') === 'true' && e.target.value.trim() && e.target.checkValidity()) { e.target.setAttribute('aria-invalid', 'false'); setErr(cur, ''); }
-  });
+    if (!lb.hidden) closeLb();
+    $('#demande').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    setTimeout(() => $('#contact-message')?.focus({ preventScroll: true }), reduced ? 0 : 700);
+  }));
 
   /* ---------- Nous contacter : message + e-mail, envoyés à arthur@kelik.fr ---------- */
   const contact = $('#contact');
@@ -624,12 +319,11 @@
 
   /* ---------- Clavier : Échap, flèches, piège de focus ---------- */
   addEventListener('keydown', e => {
-    const modal = !dv.hidden ? dv : !lb.hidden ? lb : null;
-    if (e.key === 'Escape') { if (hd.classList.contains('open')) setMenu(false); else if (modal === dv) closeDv(); else if (modal === lb) closeLb(); return; }
+    const modal = !lb.hidden ? lb : null;
+    if (e.key === 'Escape') { if (hd.classList.contains('open')) setMenu(false); else if (modal === lb) closeLb(); return; }
     if (!modal) return;
     if (modal === lb && e.key === 'ArrowRight') stepLb(1);
     if (modal === lb && e.key === 'ArrowLeft') stepLb(-1);
-    if (modal === dv && e.key === 'Enter' && e.target.matches('input:not([type="checkbox"]):not([type="radio"])')) { e.preventDefault(); next.click(); }
     if (e.key === 'Tab') {
       const f = $$('button, a[href], input:not([type="hidden"]):not(.dv-honey), textarea, video, iframe, [tabindex="-1"]', modal).filter(x => x.offsetParent && !x.disabled);
       if (!f.length) return;
