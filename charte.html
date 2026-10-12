@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kit graphique — Kelik</title>
+  <meta name="description" content="La charte graphique de Kelik : logo, couleurs, typographies, glyphes et éléments visuels.">
+  <meta name="theme-color" content="#0A0910">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0910'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23D4FFD8' stroke-width='3'/%3E%3Cpath fill='%23fff' d='M17 16h9v11l10-11h12L37 27l12 21H38l-6-12-6 5v7h-9z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:ital,wght@0,500;0,600;0,700;0,800;1,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="legacy.css?v=2">
+  <link rel="stylesheet" href="charte.css?v=202609301348">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body class="kit">
+<script src="assets/kelik.js?v=202609301348"></script>
+<div class="leaks" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav scrolled">
+  <a href="index.html" class="nav-logo" aria-label="Kelik — retour au site" data-klogo data-outline="k1"></a>
+  <nav class="kit-nav" aria-label="Sections du kit">
+    <a href="#logo">Logo</a><a href="#couleurs">Couleurs</a><a href="#typo">Typo</a><a href="#glyphes">Glyphes</a><a href="#elements">Éléments</a><a href="#ton">Ton</a>
+  </nav>
+  <a href="index.html" class="btn btn-sm btn-ghost">← Le site</a>
+</header>
+
+<main>
+  <!-- ===== Couverture ===== -->
+  <section class="kit-cover">
+    <p class="kick"><svg class="glyph"><use href="#g-spark"/></svg>Kit graphique · v1 · 2026</p>
+    <h1>L’univers <span class="outline">Kelik</span><span class="mint">.</span></h1>
+    <p class="kit-lead">Tout ce qu’il faut pour que chaque vidéo, story, affiche ou slide ressemble à <b>nous</b> : un logo qui joue, une nuit colorée, une typo qui claque, des glyphes maison et quelques règles simples.</p>
+    <div class="cover-glyphs" id="cover-glyphs" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== 01 Logo ===== -->
+  <section class="kit-sec" id="logo">
+    <header class="kit-head"><p class="kick"><svg class="glyph"><use href="#g-k"/></svg>01 — Le logo</p><h2>Un cadre, <span class="outline">deux K</span>.</h2>
+      <p>Le K en contour et le K plein, c’est notre duo : le trait et l’impact, Adrien et Arthur. Le cadre, c’est l’objectif de la caméra. Le logo peut jouer (lettres qui basculent contour ↔ plein) mais sa version de référence reste celle-ci.</p></header>
+
+    <div class="logo-grid">
+      <figure class="lg-card dark"><div data-klogo data-interactive data-outline="k1"></div><figcaption><b>Principal</b> · blanc sur Nuit — survolez les lettres</figcaption></figure>
+      <figure class="lg-card light"><div data-klogo data-outline="k1"></div><figcaption><b>Sur fond clair</b> · Nuit sur Lavande</figcaption></figure>
+      <figure class="lg-card mint"><div data-klogo data-outline="k1"></div><figcaption><b>Accent</b> · Nuit sur Menthe, pour les stickers et la merch</figcaption></figure>
+      <figure class="lg-card mono-k">
+        <div class="kk"><svg class="glyph contour"><use href="#g-k"/></svg><svg class="glyph"><use href="#g-k"/></svg></div>
+        <figcaption><b>Monogrammes</b> · K contour (Adrien) / K plein (Arthur) — avatars, favicon, filigrane</figcaption>
+      </figure>
+    </div>
+
+    <div class="rules">
+      <div class="rule-zone">
+        <div class="zone"><div data-klogo data-outline="k1"></div><span class="zx t"></span><span class="zx r"></span><span class="zx b"></span><span class="zx l"></span></div>
+        <p><b>Zone de protection</b> = la largeur d’une jambe du K (<i>x</i>) tout autour du cadre. Taille minimale : 90 px de large à l’écran, 25 mm en print.</p>
+      </div>
+      <ul class="donts">
+        <li><div class="dt stretch" data-klogo data-outline="k1"></div><span>Ne pas déformer</span></li>
+        <li><div class="dt color" data-klogo data-outline="k1"></div><span>Pas de couleurs hors palette</span></li>
+        <li><div class="dt rot" data-klogo data-outline="k1"></div><span>Ne pas pivoter</span></li>
+        <li><div class="dt shadow" data-klogo data-outline="k1"></div><span>Ni ombre ni effet</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 02 Couleurs ===== -->
+  <section class="kit-sec" id="couleurs">
+    <header class="kit-head"><p class="kick"><svg class="glyph"><use href="#g-oeil"/></svg>02 — Les couleurs</p><h2>Une nuit <span class="outline">qui brille</span>.</h2>
+      <p>Jamais de noir pur : notre fond est une nuit légèrement violette, comme un club juste avant que les lumières s’allument. Les couleurs vives sont des accents — elles ne dépassent pas 20 % d’un visuel. Cliquez pour copier.</p></header>
+    <div class="swatches" id="swatches">
+      <button class="sw" style="--c:#0A0910" data-hex="#0A0910"><span class="sw-c"></span><b>Nuit</b><code>#0A0910</code><small>Fond principal. 60–70 % des visuels.</small></button>
+      <button class="sw" style="--c:#13111B" data-hex="#13111B"><span class="sw-c"></span><b>Encre</b><code>#13111B</code><small>Cartes, panneaux, formulaires.</small></button>
+      <button class="sw" style="--c:#F3ECFF" data-hex="#F3ECFF"><span class="sw-c"></span><b>Lavande</b><code>#F3ECFF</code><small>Texte courant, sections claires.</small></button>
+      <button class="sw" style="--c:#D4FFD8" data-hex="#D4FFD8"><span class="sw-c"></span><b>Menthe</b><code>#D4FFD8</code><small>Action, CTA, style Arthur.</small></button>
+      <button class="sw" style="--c:#B7A6FF" data-hex="#B7A6FF"><span class="sw-c"></span><b>Lilas</b><code>#B7A6FF</code><small>Accent calme, style Adrien.</small></button>
+      <button class="sw" style="--c:#FF5A36" data-hex="#FF5A36"><span class="sw-c"></span><b>Flash</b><code>#FF5A36</code><small>REC, énergie, petites touches.</small></button>
+    </div>
+    <div class="ratio" aria-hidden="true"><span style="--w:62%;--c:#0A0910">Nuit 62 %</span><span style="--w:14%;--c:#13111B">Encre</span><span style="--w:12%;--c:#F3ECFF;color:#0A0910">Lav.</span><span style="--w:6%;--c:#D4FFD8"></span><span style="--w:3.5%;--c:#B7A6FF"></span><span style="--w:2.5%;--c:#FF5A36"></span></div>
+  </section>
+
+  <!-- ===== 03 Typo ===== -->
+  <section class="kit-sec" id="typo">
+    <header class="kit-head"><p class="kick"><svg class="glyph"><use href="#g-frisson"/></svg>03 — La typographie</p><h2>Posée, <span class="outline">lisible</span>, rassurante.</h2>
+      <p>Deux polices sœurs, gratuites sur Google Fonts : <b>Inter Tight</b> pour les titres, <b>Inter</b> pour les textes. Des titres en minuscules, à l’interlettrage serré. <b>JetBrains Mono</b> reste réservée à la timeline de montage.</p></header>
+    <div class="type-grid">
+      <div class="ty"><span class="ty-l">Titres · Inter Tight Bold 700</span><p class="t-xl">On tourne quand ?</p></div>
+      <div class="ty"><span class="ty-l">Mot atténué · même graisse, 42 % d’opacité</span><p class="t-xl outline">Mérite mieux</p></div>
+      <div class="ty"><span class="ty-l">Accent · Inter Tight ExtraBold Italic</span><p class="t-xl it">Deux styles.</p></div>
+      <div class="ty"><span class="ty-l">Texte · Inter Regular 400 · 16–21 px</span><p class="t-body">Kelik, c’est Arthur &amp; Adrien : deux vidéastes, deux styles. On capte l’énergie de vos événements et on la transforme en vidéos qui se partagent.</p></div>
+      <div class="ty"><span class="ty-l">Timeline · JetBrains Mono 500</span><p class="t-mono"><b class="rec"></b> REC · CAM A · 00:01:24:12 · ISO 3200</p></div>
+      <div class="ty"><span class="ty-l">Règle d’or</span><p class="t-body">Dans un titre, <b>un seul groupe de mots</b> est atténué ou passe en menthe. Jamais de majuscules forcées : on parle posément.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 04 Glyphes ===== -->
+  <section class="kit-sec" id="glyphes">
+    <header class="kit-head"><p class="kick"><svg class="glyph"><use href="#g-kiff"/></svg>04 — Les glyphes</p><h2>Nos <span class="outline">emojis</span> maison.</h2>
+      <p>17 pictos dessinés sur une grille de 48 × 48 avec le langage du logo : le cadre, les angles coupés, le plein et le contour. Pour les stories, les sous-titres, les slides, la merch… Cliquez sur un glyphe pour télécharger son SVG.</p></header>
+
+    <div class="g-controls" role="group" aria-label="Options des glyphes">
+      <div class="seg" data-opt="style"><button aria-pressed="true" data-v="plein">Plein</button><button aria-pressed="false" data-v="contour">Contour</button><button aria-pressed="false" data-v="sticker">Sticker</button></div>
+      <div class="seg dots" data-opt="color">
+        <button aria-pressed="true" data-v="#D4FFD8" style="--c:#D4FFD8" aria-label="Menthe"></button>
+        <button aria-pressed="false" data-v="#F3ECFF" style="--c:#F3ECFF" aria-label="Lavande"></button>
+        <button aria-pressed="false" data-v="#B7A6FF" style="--c:#B7A6FF" aria-label="Lilas"></button>
+        <button aria-pressed="false" data-v="#FF5A36" style="--c:#FF5A36" aria-label="Flash"></button>
+        <button aria-pressed="false" data-v="#FFFFFF" style="--c:#FFFFFF" aria-label="Blanc"></button>
+      </div>
+      <label class="acc"><input type="checkbox" id="g-accent" checked> Accent Flash</label>
+      <button class="btn btn-sm btn-mint" id="g-sheet" type="button">Planche complète .svg</button>
+    </div>
+    <div class="g-grid" id="g-grid"></div>
+    <p class="g-note">Astuce : les parties « accent » (bouche du Kiff, point REC, pupille de l’Œil…) prennent une 2<sup>e</sup> couleur, Flash par défaut.</p>
+  </section>
+
+  <!-- ===== 05 Éléments ===== -->
+  <section class="kit-sec" id="elements">
+    <header class="kit-head"><p class="kick"><svg class="glyph"><use href="#g-rec"/></svg>05 — Les éléments</p><h2>Les briques <span class="outline">de l’univers</span>.</h2>
+      <p>Sept éléments reviennent partout, sur le site comme sur les réseaux. Combinez-en deux ou trois par visuel, jamais tous.</p></header>
+    <div class="el-grid">
+      <article class="el">
+        <div class="el-demo d-cadre"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span><span class="hud tl"><b class="rec"></b>REC</span><span class="hud tr">00:00:12:08</span></div>
+        <h3>Le Cadre</h3><p>Coins de viseur autour d’une image ou d’un texte. Vient du rectangle du logo.</p>
+      </article>
+      <article class="el">
+        <div class="el-demo d-coupe"><span class="btn btn-mint">Réserver</span><span class="cut-card"></span></div>
+        <h3>La Coupe</h3><p>Un angle coupé en bas à droite, comme la jambe du L. Boutons, cartes, stickers.</p>
+      </article>
+      <article class="el">
+        <div class="el-demo d-cp"><span>Plein</span><span class="outline">Contour</span></div>
+        <h3>Contour / Plein</h3><p>Le duo en typo : un mot plein, un mot en contour. Jamais plus de deux mots en contour.</p>
+      </article>
+      <article class="el">
+        <div class="el-demo d-hud"><span><b class="rec"></b>REC · CAM A</span><span>ISO 3200 · f/1.8</span><span class="mint">00:01:24:12</span></div>
+        <h3>Le HUD</h3><p>Des infos de caméra en mono : timecode, REC, réglages. Petit, discret, partout.</p>
+      </article>
+      <article class="el">
+        <div class="el-demo d-stick" id="d-stick"></div>
+        <h3>Les Stickers</h3><p>Un glyphe sur une tuile coupée, légèrement tournée (±12°). On les colle, on les fait voler.</p>
+      </article>
+      <article class="el">
+        <div class="el-demo d-tape"><div class="tp a">Regard jeune ✦ Codes club ✦ Regard jeune ✦</div><div class="tp b">Réponse 24 h ✦ Terrain ✦ Réponse 24 h ✦</div></div>
+        <h3>Les Bandes</h3><p>Deux rubans croisés en Menthe et Flash, texte Black en majuscules. Pour les messages forts.</p>
+      </article>
+      <article class="el wide">
+        <div class="el-demo d-film"><div class="film"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+        <h3>La Pellicule</h3><p>Des images verticales 9:16 sur une bande perforée, avec codes de bord orange. Pour présenter une série de réels.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== 06 Ton ===== -->
+  <section class="kit-sec" id="ton">
+    <header class="kit-head"><p class="kick"><svg class="glyph"><use href="#g-energie"/></svg>06 — Le ton</p><h2>On parle <span class="outline">comme</span> on filme.</h2></header>
+    <div class="tone">
+      <div class="tn-card"><svg class="glyph"><use href="#g-frisson"/></svg><h3>Direct</h3><p>Des phrases courtes. Un verbe d’action. On dit ce qu’on fait.</p><p class="ex yes">« On capte l’énergie de vos soirées. »</p><p class="ex no">« Nous proposons des prestations audiovisuelles de qualité. »</p></div>
+      <div class="tn-card"><svg class="glyph"><use href="#g-feu"/></svg><h3>Énergique</h3><p>Le vocabulaire du terrain : la foule, le drop, les frissons, le vestiaire.</p><p class="ex yes">« Vos soirées méritent mieux qu’une story. »</p><p class="ex no">« Vidéos événementielles pour tous types d’événements. »</p></div>
+      <div class="tn-card"><svg class="glyph"><use href="#g-kiff"/></svg><h3>Ludique, jamais gadget</h3><p>Un clin d’œil par message, pas plus. Le fun sert l’info, il ne la remplace pas.</p><p class="ex yes">« Réponse sous 24 h. Promis, on ne dort pas. »</p><p class="ex no">« 🔥🔥🔥 OMG le meilleur studio 🔥🔥🔥 »</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-logo" data-klogo data-interactive data-outline="k1"></div>
+  <div class="footer-row"><p>© <span id="year">2026</span> Kelik — Kit graphique v1</p><p class="footer-links"><a href="index.html">← Retour au site</a><a href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener">Instagram</a></p></div>
+</footer>
+
+<script src="charte.js?v=202609301348" defer></script>
+</body>
+</html>

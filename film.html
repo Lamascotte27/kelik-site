@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kelik — Chaque événement mérite son film</title>
+  <meta name="description" content="Kelik, c’est Arthur & Adrien : deux vidéastes, deux styles. Soirées, festivals, marques, sport — chaque événement mérite son film.">
+  <meta name="theme-color" content="#0A0910">
+  <meta property="og:title" content="Kelik — Chaque événement mérite son film.">
+  <meta property="og:description" content="Arthur & Adrien, vidéastes événementiels. Dynamique ou cinématographique — ou les deux.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A0910'/%3E%3Crect x='4' y='4' width='56' height='56' fill='none' stroke='%23D4FFD8' stroke-width='3'/%3E%3Cpath fill='%23fff' d='M17 16h9v11l10-11h12L37 27l12 21H38l-6-12-6 5v7h-9z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="film.css">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Kelik","description":"Vidéastes événementiels : soirées, festivals, marques, sport.","email":"arthur@kelik.fr","founder":[{"@type":"Person","name":"Arthur"},{"@type":"Person","name":"Adrien"}],"sameAs":["https://www.instagram.com/kelik_off/"]}
+  </script>
+</head>
+<body>
+<script src="assets/kelik.js"></script>
+
+<!-- ============ INTRO : on entre dans le K ============ -->
+<div class="intro" id="intro" aria-hidden="true">
+  <svg id="intro-svg" preserveAspectRatio="xMidYMid meet">
+    <defs><clipPath id="i-kclip"><path d="M359.4 531.4H437.7V627.3L520.2 531.4H623.5L531.5 626.7L627.3 784.6H532.2L477.6 678.8L437.7 725.3V784.6H359.4Z"/></clipPath></defs>
+    <path class="i-mask" fill-rule="evenodd" d="M-60000 -60000H60000V60000H-60000Z M359.4 531.4H437.7V627.3L520.2 531.4H623.5L531.5 626.7L627.3 784.6H532.2L477.6 678.8L437.7 725.3V784.6H359.4Z"/>
+    <path class="i-cover" d="M359.4 531.4H437.7V627.3L520.2 531.4H623.5L531.5 626.7L627.3 784.6H532.2L477.6 678.8L437.7 725.3V784.6H359.4Z"/>
+    <path class="i-frame" pathLength="1" d="M212.55 418.25H1791.45V897.85H212.55Z"/>
+    <path class="i-kout" pathLength="1" clip-path="url(#i-kclip)" d="M359.4 531.4H437.7V627.3L520.2 531.4H623.5L531.5 626.7L627.3 784.6H532.2L477.6 678.8L437.7 725.3V784.6H359.4Z"/>
+    <path class="i-l" style="--i:0" d="M692 531.4H905.1V593.1H692Z M692 625.1H905.1V686.9H769.7V722.3H905.1V784.6H692Z"/>
+    <path class="i-l" style="--i:1" d="M969.7 531.4H1047.4V702.4L969.7 765.9Z M1065.1 722.3H1169.7V784.6H988.9Z"/>
+    <path class="i-l" style="--i:2" d="M1234.3 531.4H1312V592.6H1234.3Z M1234.3 625.7H1312V784.6H1234.3Z"/>
+    <path class="i-l" style="--i:3" d="M1376 531.4H1454.3V627.3L1536.8 531.4H1640.1L1548.1 626.7L1643.9 784.6H1548.8L1494.2 678.8L1454.3 725.3V784.6H1376Z"/>
+  </svg>
+  <div class="intro-meta">
+    <span><b class="rec"></b>REC</span>
+    <span>Chargement du film</span>
+    <span id="intro-pct">000%</span>
+  </div>
+  <button class="intro-skip" id="intro-skip" type="button">Passer l’intro →</button>
+</div>
+
+<div class="leaks" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#contact">Aller au contact</a>
+
+<!-- ============ NAV (épurée) ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav-logo" aria-label="Kelik — début du film" data-klogo data-outline="k1"></a>
+  <p class="nav-title"><b class="rec"></b>Kelik — le film</p>
+  <a href="#contact" class="btn btn-mint btn-sm nav-cta">Réserver une date</a>
+</header>
+
+<!-- ============ LA TIMELINE : navigation permanente ============ -->
+<nav class="tl" id="tl" aria-label="Séquences du film">
+  <div class="tl-tc"><span class="tl-state" id="tl-state">❚❚</span><span id="tl-tc">00:00:00:00</span></div>
+  <div class="tl-track" id="tl-track">
+    <div class="tl-clips" id="tl-clips"></div>
+    <span class="tl-head" id="tl-head" aria-hidden="true"></span>
+  </div>
+  <p class="tl-now" id="tl-now" aria-hidden="true">Générique</p>
+</nav>
+
+<main>
+
+<!-- ============ 00 GÉNÉRIQUE D'OUVERTURE ============ -->
+<section class="opening" id="top" data-scene="opening" data-title="Générique" data-glyph="rec">
+  <p class="kick hero-in" style="--hd:.05s"><svg class="glyph"><use href="#g-rec"/></svg>Arthur &amp; Adrien présentent</p>
+  <h1 class="op-title">
+    <span class="hero-in" style="--hd:.15s">Chaque événement</span>
+    <span class="hero-in" style="--hd:.28s">mérite <span class="outline">son film</span><span class="mint">.</span></span>
+  </h1>
+  <p class="op-sub hero-in" style="--hd:.42s">Vidéastes événementiels · Soirées · Festivals · Marques · Sport</p>
+  <a class="op-cue hero-in" style="--hd:.6s" href="#emotion"><span>Scrollez pour lancer le film</span><i></i></a>
+</section>
+
+<!-- ============ 01 L'ÉMOTION ============ -->
+<section class="scene s-emotion" id="emotion" data-scene="emotion" data-title="L’émotion" data-glyph="frisson" style="--len:4.6">
+  <div class="pin">
+    <p class="scene-kick kick"><svg class="glyph"><use href="#g-frisson"/></svg>Scène 01 — L’émotion</p>
+    <div class="em-media" id="em-media" aria-hidden="true">
+      <img src="assets/img/reel-nils.webp" alt="" class="on">
+      <img src="assets/img/reel-catho.webp" alt="">
+      <img src="assets/img/reel-hockey.webp" alt="">
+      <img src="assets/img/reel-b2b.webp" alt="">
+      <img src="assets/img/reel-danse.webp" alt="">
+      <img src="assets/img/reel-laplagne.webp" alt="">
+    </div>
+    <div class="em-shade" id="em-shade" aria-hidden="true"></div>
+    <div class="em-corners" id="em-corners" aria-hidden="true"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span><span class="em-hud"><b class="rec"></b><span id="em-tc">00:00:00:00</span></span></div>
+    <div class="em-words" id="em-words">
+      <p class="em-w"><svg class="glyph"><use href="#g-vinyle"/></svg>Une soirée.</p>
+      <p class="em-w"><svg class="glyph"><use href="#g-feu"/></svg>Un festival.</p>
+      <p class="em-w"><svg class="glyph"><use href="#g-energie"/></svg>Un match.</p>
+      <p class="em-w"><svg class="glyph"><use href="#g-cam"/></svg>Un lancement.</p>
+    </div>
+    <div class="em-lines">
+      <p class="em-l" id="em-l1">Ce qu’on en retient,<br>ce n’est pas ce qu’on a <span class="outline">vu</span>.</p>
+      <p class="em-l" id="em-l2">C’est ce qu’on a <span class="mint">ressenti</span>.<small>Notre métier : capter ça, avant que ça disparaisse.</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 LE CASTING ============ -->
+<section class="scene s-cast" id="casting" data-scene="cast" data-title="Le casting" data-glyph="k" style="--len:5">
+  <div class="pin">
+    <p class="scene-kick kick"><svg class="glyph"><use href="#g-k"/></svg>Scène 02 — Le casting</p>
+
+    <div class="cast-layer cast-a" id="cast-a">
+      <div class="montage" data-montage="fast" aria-hidden="true"></div>
+      <img class="cast-portrait" src="assets/img/arthur.webp" alt="Portrait d’Arthur" width="465" height="537">
+      <div class="cast-text" id="cast-ta">
+        <p class="cast-role">Réalisateur n°1 · <b class="rec"></b> cut / 0,2 s</p>
+        <h2 class="cast-name">Arthur</h2>
+        <p class="cast-style">Dynamique &amp; immersif</p>
+        <p class="cast-desc">Caméra au cœur de l’action, plans rythmés, montage nerveux. Pour faire <b>vibrer</b> une soirée et accrocher dès la première seconde.</p>
+      </div>
+    </div>
+
+    <div class="cast-layer cast-b" id="cast-b">
+      <div class="montage" data-montage="slow" aria-hidden="true"></div>
+      <span class="bars" id="cast-bars" aria-hidden="true"></span>
+      <img class="cast-portrait" src="assets/img/adrien.webp" alt="Portrait d’Adrien" width="367" height="552">
+      <div class="cast-text" id="cast-tb">
+        <p class="cast-role">Réalisateur n°2 · <b class="rec lilac"></b> fondu / 2,5 s</p>
+        <h2 class="cast-name">Adrien</h2>
+        <p class="cast-style">Posé &amp; cinématographique</p>
+        <p class="cast-desc">Plans construits, rythme maîtrisé, montage qui respire. Pour sublimer un lieu et raconter un événement avec <b>élégance</b>.</p>
+      </div>
+    </div>
+
+    <div class="cast-split" id="cast-split">
+      <p class="split-name a">Arthur<small>Dynamique</small></p>
+      <p class="split-name b">Adrien<small>Cinéma</small></p>
+      <div class="choose">
+        <p class="choose-q">Dynamique ou cinéma&#8239;?<br><span class="mint">Ou les deux.</span></p>
+        <div class="choose-btns">
+          <a href="#contact" class="btn btn-sm btn-mint" data-pick="arthur"><svg class="glyph"><use href="#g-k"/></svg>Arthur</a>
+          <a href="#contact" class="btn btn-sm btn-lav" data-pick="both"><svg class="glyph"><use href="#g-spark"/></svg>Les deux</a>
+          <a href="#contact" class="btn btn-sm btn-lilac" data-pick="adrien"><svg class="glyph contour"><use href="#g-k"/></svg>Adrien</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 LES IMAGES ============ -->
+<section class="scene s-films" id="images" data-scene="films" data-title="Les images" data-glyph="reel" style="--len:3.2">
+  <div class="pin">
+    <p class="scene-kick kick"><svg class="glyph"><use href="#g-reel"/></svg>Scène 03 — Les images</p>
+    <h2 class="films-title">Quelques <span class="outline">prises</span>.</h2>
+    <div class="strip-wrap" id="strip-wrap">
+      <div class="strip" id="strip">
+        <a class="frame" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="▶ Voir">
+          <span class="edge">KELIK 400T ▸ 01A</span>
+          <div class="frame-img"><img src="assets/img/reel-catho.webp" alt="La Catho by Night : fumée et foule devant la scène" width="406" height="720" loading="lazy"></div>
+          <div class="frame-cap"><svg class="glyph"><use href="#g-feu"/></svg><b>La Catho by Night</b><span>Soirée · Lille</span></div>
+        </a>
+        <a class="frame" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="▶ Voir">
+          <span class="edge">KELIK 400T ▸ 02A</span>
+          <div class="frame-img"><img src="assets/img/reel-nils.webp" alt="Réel du DJ Nils, de dos dans un couloir de backstage" width="406" height="720" loading="lazy"></div>
+          <div class="frame-cap"><svg class="glyph"><use href="#g-vinyle"/></svg><b>Réel DJ “Nils”</b><span>Artiste · Lille</span></div>
+        </a>
+        <a class="frame" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="▶ Voir">
+          <span class="edge">KELIK 400T ▸ 03A</span>
+          <div class="frame-img"><img src="assets/img/reel-hockey.webp" alt="Équipe de hockey au bord du terrain" width="406" height="720" loading="lazy"></div>
+          <div class="frame-cap"><svg class="glyph"><use href="#g-energie"/></svg><b>Équipe hockey</b><span>Sport · Lambersart</span></div>
+        </a>
+        <a class="frame" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="▶ Voir">
+          <span class="edge">KELIK 400T ▸ 04A</span>
+          <div class="frame-img"><img src="assets/img/reel-b2b.webp" alt="Vidéo B2B : logo sur explosion de poudres colorées" width="406" height="720" loading="lazy"></div>
+          <div class="frame-cap"><svg class="glyph"><use href="#g-cam"/></svg><b>Vidéo B2B</b><span>Marque · Lille</span></div>
+        </a>
+        <a class="frame" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="▶ Voir">
+          <span class="edge">KELIK 400T ▸ 05A</span>
+          <div class="frame-img"><img src="assets/img/reel-danse.webp" alt="Réel danse : interview d’un danseur d’Abondance Mouv" width="406" height="720" loading="lazy"></div>
+          <div class="frame-cap"><svg class="glyph"><use href="#g-kiff"/></svg><b>Réel danse</b><span>Asso · Roubaix</span></div>
+        </a>
+        <a class="frame" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="▶ Voir">
+          <span class="edge">KELIK 400T ▸ 06A</span>
+          <div class="frame-img"><img src="assets/img/reel-laplagne.webp" alt="Vlog snowboard en plein soleil à La Plagne" width="406" height="720" loading="lazy"></div>
+          <div class="frame-cap"><svg class="glyph"><use href="#g-pin"/></svg><b>Vlog</b><span>Voyage · La Plagne</span></div>
+        </a>
+        <a class="frame frame-more" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener" data-cursor="voir" data-cursor-label="Instagram ↗">
+          <span class="edge">KELIK 400T ▸ FIN</span>
+          <div class="frame-img">
+            <svg class="glyph"><use href="#g-wow"/></svg>
+            <b>@kelik_off</b>
+            <span>La suite se passe sur Instagram ↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="films-meta"><span id="pl-count">01 / 06</span><span class="pl-bar"><span id="pl-bar"></span></span></div>
+  </div>
+</section>
+
+<!-- ============ 04 LA MÉTHODE ============ -->
+<section class="scene s-method" id="methode" data-scene="method" data-title="La méthode" data-glyph="clap" style="--len:4.2">
+  <div class="pin">
+    <p class="scene-kick kick"><svg class="glyph"><use href="#g-clap"/></svg>Scène 04 — La méthode</p>
+    <h2 class="method-title">De votre idée <span class="outline">au film publié.</span></h2>
+
+    <div class="nle" aria-hidden="true">
+      <div class="nle-top"><span><svg class="glyph"><use href="#g-reel"/></svg>SÉQUENCE : VOTRE_EVENEMENT_V1</span><span class="nle-tc" id="nle-tc">00:00:00:00</span></div>
+      <div class="nle-body" id="nle-body">
+        <div class="ruler"><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span><span>01:00</span></div>
+        <div class="trk"><span class="tn">V2</span><div class="lane">
+          <span class="clip fx" style="--s:34%;--w:18%">Titrage</span>
+          <span class="clip fx" style="--s:56%;--w:20%">Étalonnage</span>
+          <span class="clip fx" style="--s:80%;--w:15%">Sous-titres</span>
+        </div></div>
+        <div class="trk"><span class="tn">V1</span><div class="lane">
+          <span class="clip step" style="--s:0%;--w:24.5%" data-i="0"><svg class="glyph"><use href="#g-oeil"/></svg>01 Brief</span>
+          <span class="clip step" style="--s:25%;--w:24.5%" data-i="1"><svg class="glyph"><use href="#g-cam"/></svg>02 Tournage</span>
+          <span class="clip step" style="--s:50%;--w:24.5%" data-i="2"><svg class="glyph"><use href="#g-clap"/></svg>03 Montage</span>
+          <span class="clip step" style="--s:75%;--w:25%" data-i="3"><svg class="glyph"><use href="#g-reel"/></svg>04 Livraison</span>
+        </div></div>
+        <div class="trk"><span class="tn">A1</span><div class="lane"><svg class="wave" id="wave" preserveAspectRatio="none"></svg></div></div>
+        <div class="playhead" id="playhead"><span></span></div>
+      </div>
+    </div>
+
+    <ol class="method-steps">
+      <li class="mstep" data-i="0"><span class="mstep-n">01 / 04</span><h3>Le brief.</h3><p>Un appel, un message. On comprend votre événement, votre public, vos réseaux.</p></li>
+      <li class="mstep" data-i="1"><span class="mstep-n">02 / 04</span><h3>Le tournage.</h3><p>On se fond dans l’action, au plus près de la foule. Adaptables, quoi qu’il arrive.</p></li>
+      <li class="mstep" data-i="2"><span class="mstep-n">03 / 04</span><h3>Le montage.</h3><p>Dynamique avec Arthur, cinéma avec Adrien — ou les deux. Même exigence.</p></li>
+      <li class="mstep" data-i="3"><span class="mstep-n">04 / 04</span><h3>La livraison.</h3><p>Des vidéos pensées pour les réseaux, prêtes à publier. Et à faire parler.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 05 GÉNÉRIQUE DE FIN ============ -->
+<section class="scene s-credits" id="credits" data-scene="credits" data-title="Générique" data-glyph="spark" style="--len:4">
+  <div class="pin">
+    <p class="scene-kick kick"><svg class="glyph"><use href="#g-spark"/></svg>Scène 05 — Générique de fin</p>
+    <div class="roll" id="roll">
+      <div class="roll-logo" data-klogo data-outline="k1"></div>
+      <p class="roll-pres">Un film de <b>Arthur &amp; Adrien</b></p>
+
+      <dl class="cr">
+        <div><dt>Réalisation</dt><dd>Arthur <small>dynamique</small><br>Adrien <small>cinéma</small></dd></div>
+        <div><dt>Au programme</dt><dd>Soirées &amp; clubs<br>Festivals<br>Marques &amp; entreprises<br>Sport &amp; clubs<br>Artistes &amp; DJ</dd></div>
+      </dl>
+
+      <p class="cr-h"><svg class="glyph"><use href="#g-coeur"/></svg>Avec la confiance de</p>
+      <ul class="cr-logos">
+        <li><img src="assets/img/clients/francetv.webp" alt="France.tv"></li>
+        <li><img src="assets/img/clients/moorea.webp" alt="Mörea Festival" class="big"></li>
+        <li><img src="assets/img/clients/basicfit.webp" alt="Basic-Fit"></li>
+        <li><img src="assets/img/clients/millon.webp" alt="Millon Belgique"></li>
+        <li><img src="assets/img/clients/greenway.webp" alt="Greenway Festival" class="big"></li>
+        <li><img src="assets/img/clients/abondance.webp" alt="Abondance Mouv" class="big"></li>
+        <li><img src="assets/img/clients/rca.webp" alt="RCA Arras Triathlon" class="tall"></li>
+        <li><img src="assets/img/clients/petitbambou-c.webp" alt="Petit BamBou" class="tall mono"></li>
+        <li class="cr-txt">nilsforeal <small>DJ</small></li>
+      </ul>
+
+      <dl class="cr">
+        <div><dt>Pourquoi nous</dt><dd>Un regard jeune &amp; actuel<br>Les codes club &amp; festival<br>Deux styles complémentaires<br>Du contenu taillé pour les réseaux<br>Une adaptabilité totale sur le terrain</dd></div>
+        <div><dt>Tourné à</dt><dd>Lille · Roubaix<br>Lambersart · La Plagne</dd></div>
+        <div><dt>Formats</dt><dd>Réels 9:16 · Aftermovies<br>Teasers · Vidéos de marque</dd></div>
+        <div><dt>En activité depuis</dt><dd>2020</dd></div>
+        <div><dt>Délai de réponse</dt><dd>Moins de 24 h</dd></div>
+      </dl>
+
+      <p class="roll-joke">Aucun trépied n’a été maltraité pendant le tournage.</p>
+    </div>
+    <p class="fin" id="fin"><span>Fin<span class="mint">.</span></span><small id="fin-small">… ou presque.</small></p>
+  </div>
+</section>
+
+<!-- ============ 06 SCÈNE POST-GÉNÉRIQUE ============ -->
+<section class="contact" id="contact" data-scene="contact" data-title="Post-générique" data-glyph="kiff">
+  <p class="kick rv"><svg class="glyph"><use href="#g-kiff"/></svg>Scène post-générique</p>
+  <h2 class="ct-title rv">Le prochain film,<br><span class="outline">c’est le vôtre</span><span class="mint">.</span></h2>
+  <p class="ct-sub rv">Racontez-nous votre événement. On vous répond sous 24&#8239;h.</p>
+
+  <div class="contact-grid">
+    <form class="brief rv" id="brief" novalidate>
+      <div class="brief-head"><span><b class="rec"></b>Le brief express</span><span class="mono">30 s chrono</span></div>
+      <fieldset>
+        <legend>Votre événement</legend>
+        <div class="chips">
+          <label><input type="radio" name="type" value="Soirée / club" checked><span><svg class="glyph"><use href="#g-vinyle"/></svg>Soirée</span></label>
+          <label><input type="radio" name="type" value="Festival"><span><svg class="glyph"><use href="#g-feu"/></svg>Festival</span></label>
+          <label><input type="radio" name="type" value="Marque / entreprise"><span><svg class="glyph"><use href="#g-cam"/></svg>Marque</span></label>
+          <label><input type="radio" name="type" value="Sport"><span><svg class="glyph"><use href="#g-energie"/></svg>Sport</span></label>
+          <label><input type="radio" name="type" value="Artiste / DJ"><span><svg class="glyph"><use href="#g-spark"/></svg>Artiste</span></label>
+          <label><input type="radio" name="type" value="Autre"><span><svg class="glyph"><use href="#g-wow"/></svg>Autre</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Votre réal</legend>
+        <div class="chips">
+          <label><input type="radio" name="style" value="arthur"><span><svg class="glyph"><use href="#g-k"/></svg>Arthur · dynamique</span></label>
+          <label><input type="radio" name="style" value="adrien"><span><svg class="glyph contour"><use href="#g-k"/></svg>Adrien · cinéma</span></label>
+          <label><input type="radio" name="style" value="both" checked><span><svg class="glyph"><use href="#g-spark"/></svg>Les deux</span></label>
+        </div>
+      </fieldset>
+      <div class="fields">
+        <label class="field"><span>Nom</span><input type="text" name="nom" autocomplete="name" placeholder="Votre nom"></label>
+        <label class="field"><span>Date</span><input type="date" name="date"></label>
+        <label class="field wide"><span>Votre projet</span><textarea name="message" rows="3" placeholder="Le lieu, l’ambiance, les réseaux visés…"></textarea></label>
+      </div>
+      <button type="submit" class="btn btn-mint btn-block"><span>Envoyer le brief <span id="brief-to">à Arthur &amp; Adrien</span></span><svg class="glyph"><use href="#g-frisson"/></svg></button>
+      <p class="brief-hint">Ouvre votre messagerie avec le brief déjà rédigé.</p>
+    </form>
+
+    <aside class="direct">
+      <p class="kick small rv">Ou en direct</p>
+      <a class="mail rv" href="mailto:arthur@kelik.fr">
+        <img src="assets/img/arthur.webp" alt="" width="465" height="537">
+        <span><small>Arthur · dynamique</small>arthur@kelik.fr</span>
+      </a>
+      <a class="mail rv" href="mailto:adrien@kelik.fr">
+        <img src="assets/img/adrien.webp" alt="" width="367" height="552">
+        <span><small>Adrien · cinéma</small>adrien@kelik.fr</span>
+      </a>
+      <a class="insta rv" href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor"/></svg>
+        <span><small>Les coulisses</small>@kelik_off</span>
+      </a>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-logo" data-klogo data-interactive data-outline="k1" data-cursor="drag" data-cursor-label="Joue !"></div>
+  <p class="footer-hint"><svg class="glyph"><use href="#g-kiff"/></svg>Survolez les lettres : chacune a deux styles, comme nous.</p>
+  <div class="footer-row">
+    <p>© <span id="year">2026</span> Kelik — Arthur &amp; Adrien</p>
+    <p class="footer-links">
+      <a href="mailto:arthur@kelik.fr">arthur@kelik.fr</a>
+      <a href="mailto:adrien@kelik.fr">adrien@kelik.fr</a>
+      <a href="https://www.instagram.com/kelik_off/" target="_blank" rel="noopener">Instagram</a>
+      <a href="charte.html">Kit graphique ↗</a>
+    </p>
+  </div>
+</footer>
+
+<script src="film.js" defer></script>
+</body>
+</html>

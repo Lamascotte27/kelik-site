@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /film.html
+Disallow: /404.html
+Disallow: /_archive/
+
+Sitemap: https://kelik.fr/sitemap.xml
